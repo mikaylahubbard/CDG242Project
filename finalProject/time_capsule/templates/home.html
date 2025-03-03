@@ -1,3 +1,5 @@
+{% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,23 +8,26 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    {% load static %}
+    <link rel="stylesheet", type="text/css", href="{%static 'time_capsule/styles.css' %}">
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Home</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body>
+  <body class="bg-secondary text-white">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div clas="container-fluid">
-            {% comment %} <a class="navbar-brand" href="javascript:void(0)">Logo</a> {% endcomment %}
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
+            {% comment %} <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span> {% endcomment %}
             </button>
             <div class="collapse navbar-collapse" id="mynavbar">
+              {%load static%}
+              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="My image"></a>
                 <ul class="navbar-nav me-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link active" href="/">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/about/">About</a>
@@ -36,12 +41,50 @@
                   <li class="nav-item">
                     <a class="nav-link" href="/capsules/">My Capsules</a>
                   </li>
+
+
+                  {% comment %} {% if time_capsule.is_authenticated %}
+                    <li><a href="{% url "logout" %}"><span class="glyphicon glyphicon-log-out"></span>   Logout</a></li>
+                  {% else %}
+                    <li><a href="{% url "register" %}"><span class="glyphicon glyphicon-user"></span>   Sign up</a></li>
+                    <li><a href="{% url "login" %}"><span class="glyphicon glyphicon-log-in"></span>   Log in</a></li>
+                  {% endif %} {% endcomment %}
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout/">Logout</a>
+                  </li>
+                  {%else%}
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login/">Login</a>
+                  </li> 
+                  {%endif%}
                 </ul>
+                
         </div>
     </nav>
     <div>
-      <h1>Hello World</h1>
-      <p>This is the home page!</p>
+      <div class="jumbotron p-5 d-flex justify-content-center">
+     
+          {% load static %}
+          <img src="{% static 'time_capsule/title3.png'%}">
+          {% comment %} <h1 class="d-flex justify-content-center">Time Capsule</h1> {% endcomment %}
+          {% comment %} <h4 class="d-flex justify-content-center">Save your memories for the future</h4> {% endcomment %}
+
+      </div>
+      <div class="m-5 text-wrap col-md-6 mx-auto">
+        {% if user.is_authenticated %}
+        <h1 class="text-center">Hello, {{ user.first_name }}!</h1>
+        {% else %}
+        <h1 class="text-center">Hello, Guest!</h1>
+        {%endif%}
+        
+        <h3 class="text-center">Welcome to Time Capsule :)</h3>
+       
+        <p class="test-center">This is a place where you can write letters to your future self and save snapshots of what your life is like right now. Each capsule you make can be scheduled to unlock at a chosen future date!</p>
+        <a href="/letters/">Write a Letter</a>
+        <a href="/form/">Complete a Prompt</a>
+        <a href="/capsules/">View your Capsules</a>
+      </div>
     </div>
   </body>
 </html>

@@ -12,14 +12,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
-  <body>
+  <body class="bg-secondary text-white">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div clas="container-fluid">
-            {% comment %} <a class="navbar-brand" href="javascript:void(0)">Logo</a> {% endcomment %}
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="mynavbar">
+              {%load static%}
+              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="My image"></a>
                 <ul class="navbar-nav me-auto">
                   <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
@@ -34,14 +32,32 @@
                     <a class="nav-link" href="/form/">Forms</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/capsules/">My Capsules</a>
+                    <a class="nav-link active" href="/capsules/">My Capsules</a>
                   </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout/">Logout</a>
+                  </li>
+                  {%else%}
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login/">Login</a>
+                  </li> 
+                  {%endif%}
+                </ul>
                 </ul>
         </div>
     </nav>
     <div>
-      <h1>Capsules</h1>
-      <p>This is the capsules page!</p>
+      {% if user.is_authenticated %}
+      <h1>Your capsules</h1>
+      {% else %}
+      <div class="container mt-4">
+        <div class="col-6 mx-auto card p-5 shadow-lg bg-light">
+          <h2 class="ps-5">Please sign in to view this page</h2>
+          <a class="btn btn-secondary mt-5" href="/login/">Log in</a>
+        </div>
+      </div>
+      {% endif %}
     </div>
   </body>
 </html>

@@ -1,0 +1,7 @@
+https://www.geeksforgeeks.org/how-to-set-active-class-to-nav-menu-from-bootstrap/
+https://getbootstrap.com/docs/5.0/components/navbar/
+https://www.w3schools.com/bootstrap5/bootstrap_navbar.php
+https://www.geeksforgeeks.org/django-sign-up-and-login-with-confirmation-email-python/
+https://www.geeksforgeeks.org/user-authentication-system-using-django/ 
+https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Django/Authentication
+https://docs.djangoproject.com/en/5.1/howto/static-files/ 
