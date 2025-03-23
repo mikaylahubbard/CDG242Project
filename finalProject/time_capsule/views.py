@@ -25,7 +25,6 @@ def home(request):
     context = {
         'user': current_user,
     }
-    # return HttpResponse(template.render())
     return render(request, 'home.html', context)
 
 def about(request):
@@ -36,6 +35,9 @@ def about(request):
     return render(request, 'about.html', context)
 
 def letters(request):
+    if request.method == "POST":
+        # create a time capsule
+        return redirect("/createCapsule/")
     current_user = request.user
     context = {
         'user': current_user,
@@ -43,6 +45,9 @@ def letters(request):
     return render(request, 'letters.html', context)
 
 def form(request):
+    if request.method == "POST":
+        #create a time capsule
+        return redirect("/createCapsule/")
     current_user = request.user
     context = {
         'user': current_user,
@@ -55,6 +60,16 @@ def capsules(request):
         'user': current_user,
     }
     return render(request, 'capsules.html', context)
+
+def create(request):
+    if request.method == "POST":
+        # Create the capsule
+        return redirect("/capsules/")
+    current_user = request.user
+    context = {
+        'user': current_user,
+    }
+    return render(request, 'createCapsule.html', context)
 
 # Define a view function for the login page
 def login_page(request):
@@ -117,7 +132,7 @@ def register_page(request):
         
         # Display an information message indicating successful account creation
         messages.info(request, "Account created Successfully!")
-        return redirect('/register/')
+        return redirect('/login/')
     
     current_user = request.user
     context = {

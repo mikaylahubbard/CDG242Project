@@ -49,8 +49,20 @@
     </nav>
     <div>
       {% if user.is_authenticated %}
-      <h1>Letters</h1>
-      <p>This is the Letters page!</p>
+      <div class="mx-5 text-wrap col-md-6 mx-auto">
+        <p class="text-center display-5 mt-5">Write a letter to your future self</p>
+        <p>Include whatever you think you might like to know about yourself. Document you interests and feeling right now or your prediction of what your future will be. This can be a letter to yourself in 5 years, a letter for yourself for next week, or even a letter for someone else. Here you have complete freedom and the security to  vent however you would like. Enjoy :)</p>
+      </div>
+      <form class="p-5" method="post">
+        {% csrf_token %} 
+        <div class="px-5 mx-5">
+          <div class="form-group">
+            {% comment %} <label for="letterTextArea">Write your letter here:</label> {% endcomment %}
+            <textarea rows="10" class="form-control" placeholder="Write your letter here" id="letterTextArea"></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark mt-3">Save as Time Capsule</button>
+        </div>
+      </form>
       {% else %}
       <div class="container mt-4">
         <div class="col-6 mx-auto card p-5 shadow-lg bg-light">

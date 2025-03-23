@@ -49,8 +49,78 @@
     </nav>
     <div>
       {% if user.is_authenticated %}
-      <h1>Forms</h1>
-      <p>This is the forms page!</p>
+      <div class="mx-5 text-wrap col-md-6 mx-auto">
+        <p class="text-center display-5 mt-5">Answer Some Questions</p>
+        <p>Below is a form you can fill out and put into a time capsule. Your future self can see your past selves answers and reflect on the differences between then and now :)</p>
+      </div>
+      <form class="p-5 col-6 mx-auto card p-3 shadow-lg" method="post">
+
+        {% comment %} <form class="" method="post" enctype="multipart/form-data"> {% endcomment %}
+        {% csrf_token %} 
+          <h4 class="pt-5">General Questions:</h4>
+          <div class="form-group">
+            <label for="q1" class="py-2">What year is it?</label>
+            <textarea class="form-control" id="q1"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q2" class="py-2">What is the weather like?</label>
+            <textarea class="form-control" id="q2"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q3" class="py-2">Where are you living?</label>
+            <textarea class="form-control" id="q3"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q4" class="py-2">What is your occupation?</label>
+            <textarea class="form-control" id="q4"></textarea>
+          </div>
+          <h4 class="pt-5">Favorites:</h4>
+          <div class="form-group">
+            <label for="q5" class="py-2">What is your current favorite song?</label>
+            <textarea class="form-control" id="q5"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q6" class="py-2">Favorite book?</label>
+            <textarea class="form-control" id="q6"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q7" class="py-2">Favorite movie or show?</label>
+            <textarea class="form-control" id="q7"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q8" class="py-2">Favorite foods?</label>
+            <textarea class="form-control" id="q8"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q9" class="py-2">What are some things you dislike?</label>
+            <textarea class="form-control" id="q9"></textarea>
+          </div>
+          <h4 class="pt-5">Personal Questions:</h4>
+          <div class="form-group">
+            <label for="q10" class="py-2">What is your favorite recent memory?</label>
+            <textarea class="form-control" id="q1"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q1" class="py-2">What are your current life goals or wishes?</label>
+            <textarea class="form-control" id="q10"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q11" class="py-2">What are the best parts of your life right now?</label>
+            <textarea class="form-control" id="q11"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q12" class="py-2">What do you think your life will be like when this time capsule unlocks?</label>
+            <textarea class="form-control" id="q12"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="q13" class="py-2">Anythin else you would like to tell your future self?</label>
+            <textarea class="form-control" id="q13"></textarea>
+          </div>
+
+
+          <button type="submit" class="btn btn-dark mt-3">Save as Time Capsule</button>
+        </div>
+      </form>
       {% else %}
       <div class="container mt-4">
         <div class="col-6 mx-auto card p-5 shadow-lg bg-light">

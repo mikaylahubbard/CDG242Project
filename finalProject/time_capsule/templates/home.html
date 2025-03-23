@@ -71,19 +71,33 @@
           {% comment %} <h4 class="d-flex justify-content-center">Save your memories for the future</h4> {% endcomment %}
 
       </div>
-      <div class="m-5 text-wrap col-md-6 mx-auto">
+      <div class=" m-5 text-wrap col-md-6 mx-auto">
         {% if user.is_authenticated %}
-        <h1 class="text-center">Hello, {{ user.first_name }}!</h1>
+        <h1 class="text-center display-4">Hello, {{ user.first_name }}!</h1>
         {% else %}
-        <h1 class="text-center">Hello, Guest!</h1>
+        <h1 class="text-center display-4">Hello, Guest!</h1>
         {%endif%}
         
-        <h3 class="text-center">Welcome to Time Capsule :)</h3>
+        <h3 class="text-center display-6">Welcome to Time Capsule :)</h3>
        
-        <p class="test-center">This is a place where you can write letters to your future self and save snapshots of what your life is like right now. Each capsule you make can be scheduled to unlock at a chosen future date!</p>
-        <a href="/letters/">Write a Letter</a>
-        <a href="/form/">Complete a Prompt</a>
-        <a href="/capsules/">View your Capsules</a>
+        
+        <p class="">This is a place where you can write letters to your future self and save snapshots of what your life is like right now. Each capsule you make can be scheduled to unlock at a chosen future date!</p>
+     
+        <div class="row m-5 pb-5">
+          <div class="col-sm-4 text-center">
+                <a href="/letters/" class="btn btn-dark p-3">Write a Letter</a>
+          </div>
+          <div class="col-sm-4 text-center">
+            <a href="/form/" class="btn btn-dark p-3">Complete a Prompt</a>
+          </div>
+          <div class="col-sm-4 text-center">
+            <a href="/capsules/" class="btn btn-dark p-3">View Capsules</a>
+          </div>
+        
+        
+        </div>
+          
+        </div>
       </div>
     </div>
   </body>

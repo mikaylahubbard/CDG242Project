@@ -47,12 +47,29 @@
         </div>
     </nav>
     <div class="container mt-5">
-        <!-- Login form -->
+        <!-- submission form -->
         <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
             {% csrf_token %}  <!-- CSRF token for security -->
 
-            <!-- Login heading -->
-            <h3>Are you sure you want to log out?</h3>
+            <!--heading -->
+            <h3 class="text-center">Time Capsule Settings</h3>
+
+            <div class="mb-3 mt-3">
+                <label for="name" class="form-label">Name of Capsule: </label>
+                <input type="textarea" class="form-control" id="name" placeholder="Enter a title..." name="e">
+            </div>
+            <div class="mb-3 mt-3">
+                <p>When would you like your Time Capsule to unlock?</p>
+                <label for="date" class="form-label">Choose a date: </label>
+                <input type="date" id="date">
+            </div>
+            <div class="mb-3">
+                <label for="time" class="form-label">Choose a time: </label>
+                <input type="time" id="time">
+            </div>
+          
+           
+           
 
             <!-- Display error/success messages -->
             {% if messages %}
@@ -64,7 +81,7 @@
             {% endif %}
 
             <!-- Submit button -->
-            <button type="submit" class="btn btn-secondary">Log out</button>
+            <button type="submit" class="btn btn-secondary">Save Time Capsule</button>
         </form>
     </div>
   </body>
