@@ -5,3 +5,8 @@
    color:white;
 }
 
+.pocket {
+   display: block;
+   width: 42%;
+   height: auto;
+}

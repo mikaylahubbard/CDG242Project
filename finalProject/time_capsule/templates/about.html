@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% load static %}
+    <link rel="stylesheet", type="text/css", href="{%static 'time_capsule/styles.css' %}">
     <!-- Latest compiled and minified CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -47,9 +49,36 @@
                 </ul>
         </div>
     </nav>
-    <div>
-      <h1>About</h1>
-      <p>This is the about page!</p>
-    </div>
+      <div class="mx-5 text-wrap col-md-6 mx-auto">
+        <p class="text-center display-5 my-5">About Us</p>
+        <p>The goal of this webapp is to allow users to store their memories. Through the time capsule features made available on this site, one can create snapshots of their current lives, feelings, and personality. Once a time capsule is saved, the user can choose a time it will unlock. Unitl then, the contents of the time capsule will be unavailable. The goal is that when opening a time capsule, the user can get a glimpse into their own past.  This program is meant to foster both current reflection and future recollection. </p>
+      </div> 
+      <div class="mx-5 text-wrap col-md-6 mx-auto">
+        <p>Note: this site is created by a college student (me) as a part of a course project.</p>
+      </div>
+
+      <div class = "row mb-4">
+        <div class="col-md-7">
+          <p class="text-end display-5 my-5 pe-5">Features</p>
+          <div class="text-end px-5">
+            <p>This app currently has two time capsule features:</p>
+            <div class="text-wrap col-md-6 mx-auto">
+            <p class="pe-5 me-5">1. Letter</p>
+            <p class="pe-5 me-5">2. Form<p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+        <img src="/static/time_capsule/pocket.png" class="img-fluid pocket">
+        </div>
+      </div>
+      
+
+      <div class="mx-5 mb-5 pb-5 text-wrap col-md-6 mx-auto">
+        <p>The <b>letter</b> option is marketed as a letter to your future self. This feature gives the user the freedom to write about whatever they want.</p>
+        <p>The <b>form</b> option is a more guided time capsule creation experience. It is designed to allow users to answer different questions made for them to record their current life and mindset.</p>
+        <p>The <b>Capsules</b> page is a space where all your created time capsules will be displayed. You will not be able to access those that haven’t reached their unlock data, but once they unlock, you can access them here. You can also see when locked capsules are scheduled to be releases </p>
+      </div> 
+
   </body>
 </html>
