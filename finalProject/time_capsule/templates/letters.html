@@ -53,16 +53,62 @@
         <p class="text-center display-5 mt-5">Write a letter to your future self</p>
         <p>Include whatever you think you might like to know about yourself. Document you interests and feeling right now or your prediction of what your future will be. This can be a letter to yourself in 5 years, a letter for yourself for next week, or even a letter for someone else. Here you have complete freedom and the security to  vent however you would like. Enjoy :)</p>
       </div>
-      <form class="p-5" method="post">
+      {% comment %} <form class="p-5" method="post">
         {% csrf_token %} 
         <div class="px-5 mx-5">
           <div class="form-group">
             {% comment %} <label for="letterTextArea">Write your letter here:</label> {% endcomment %}
-            <textarea rows="10" class="form-control" placeholder="Write your letter here" id="letterTextArea"></textarea>
+            {% comment %} <textarea rows="10" class="form-control" placeholder="Write your letter here" id="letterTextArea"></textarea>
           </div>
           <button type="submit" class="btn btn-dark mt-3">Save as Time Capsule</button>
+        </div> 
+      </form>{% endcomment %} 
+
+      <form class="col-10 card mx-auto my-5 card px-5 py-3 shadow-lg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}  <!-- CSRF token for security -->
+
+        <!--heading -->
+        <br />
+        {{form.content}}
+        <div class="col-8 p-5 align-self-center">
+          <hr />
+          <h3 class="text-center">Time Capsule Settings</h3>
+          <hr />
+
+          
+          <div class="my-3 mx-5 mt-5">
+              {% comment %} <label for="name" class="form-label">Name of Capsule: </label>
+              <input type="textarea" class="form-control" id="capsule_name" placeholder="Enter a title..." name="e"> {% endcomment %}
+          
+              {{ form.capsule_name.label_tag }}
+              <p>
+              {{ form.capsule_name }}
+          </div>
+          <div class="my-3 mx-5">
+              <p>When would you like your Time Capsule to unlock?</p>
+              {{form.date.label_tag}}
+              {{form.date}}
+          </div>
+          <div class="mb-3 mx-5">
+              {{form.time.label_tag}}
+              {{form.time}}
+          </div>
+        
+
+          <!-- Display error/success messages -->
+          {% if messages %}
+          <div class="alert alert-primary" role="alert">
+              {% for message in messages %}
+              {{ message }}
+              {% endfor %}
+          </div>
+          {% endif %}
+
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-secondary mx-5">Save Time Capsule</button>
         </div>
-      </form>
+    </form>
+       
       {% else %}
       <div class="container mt-4">
         <div class="col-6 mx-auto card p-5 shadow-lg bg-light">

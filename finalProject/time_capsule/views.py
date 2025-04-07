@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 
+
 # from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.forms import AuthenticationForm
 # from .forms import UserRegisterForm
@@ -18,6 +19,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
+from .forms import *
+
 
 
 def home(request):
@@ -35,40 +38,98 @@ def about(request):
     return render(request, 'about.html', context)
 
 def letters(request):
-    if request.method == "POST":
-        # create a time capsule
-        return redirect("/createCapsule/")
-    current_user = request.user
-    context = {
-        'user': current_user,
-    }
-    return render(request, 'letters.html', context)
+        if request.method == "POST":
+                # Create the capsule
+            form = LetterForm(request.POST)
+            if form.is_valid():
+                capsule_name = form.cleaned_data['capsule_name']
+                content = form.cleaned_data['content']
+                date = form.cleaned_data['date']
+                time = form.cleaned_data['time']
+                capsule = LetterCapsule(capsule_name=capsule_name, content=content, date=date, time=time)
+                capsule.save()
+                
+            return redirect("/capsules/")
+        else:
+            form = LetterForm()
+        current_user = request.user
+        context = {
+            'user': current_user,
+            'form': form,
+        }
+        return render(request, 'letters.html', context)
+
+
 
 def form(request):
     if request.method == "POST":
         #create a time capsule
-        return redirect("/createCapsule/")
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            capsule_name = form.cleaned_data['capsule_name']
+            date = form.cleaned_data['date']
+            time = form.cleaned_data['time']
+            year = form.cleaned_data['year']
+            weather = form.cleaned_data['weather']
+            living = form.cleaned_data['living']
+            occupation = form.cleaned_data['occupation']
+            song = form.cleaned_data['song']
+            book = form.cleaned_data['book']
+            show = form.cleaned_data['show']
+            foods = form.cleaned_data['foods']
+            dislikes = form.cleaned_data['dislikes']
+            memory = form.cleaned_data['memory']
+            goals = form.cleaned_data['goals']
+            best = form.cleaned_data['best']
+            future = form.cleaned_data['future']
+            message = form.cleaned_data['message']
+            
+            capsule = QuestionCapsule(capsule_name=capsule_name, date=date, time=time, year=year, weather=weather, living=living, occupation=occupation, song=song, 
+                                      book=book, show=show, foods=foods, dislikes=dislikes, memory=memory, goals=goals, best=best, future=future, message=message)
+            capsule.save()
+            
+        return redirect("/capsules/")
+    else:
+        form = QuestionForm()
     current_user = request.user
     context = {
         'user': current_user,
+        'form': form,
     }
     return render(request, 'form.html', context)
 
 def capsules(request):
+    # display the database contents
+    letters = LetterCapsule.objects.all()
+    forms = QuestionCapsule.objects.all()
+    
     current_user = request.user
     context = {
         'user': current_user,
+        'letters': letters,
+        'forms': forms,
     }
     return render(request, 'capsules.html', context)
 
 def create(request):
     if request.method == "POST":
         # Create the capsule
-        return redirect("/capsules/")
+        form = LetterForm(request.POST)
+        if form.is_valid():
+            capsule_name = form.cleaned_data['capsule_name']
+            content = form.cleaned_data['content']
+            capsule = LetterCapsule(capsule_name=capsule_name, content=content)
+            capsule.save()
+            
+            return redirect("/capsules/")
+    else:
+        form = LetterForm()
     current_user = request.user
     context = {
         'user': current_user,
+        'form': form,
     }
+    
     return render(request, 'createCapsule.html', context)
 
 # Define a view function for the login page

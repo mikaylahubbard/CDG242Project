@@ -50,6 +50,19 @@
     <div>
       {% if user.is_authenticated %}
       <h1>Your capsules</h1>
+      <p>Letters</p>
+      <ul>
+        {%for letter in letters %}
+        <li>{{letter}}</li>
+        {% endfor %}
+      </ul>
+
+      <p>Forms</p>
+      <ul>
+        {%for form in forms%}
+        <li>{{form}}</li>
+        {%endfor%}
+      </ul>
       {% else %}
       <div class="container mt-4">
         <div class="col-6 mx-auto card p-5 shadow-lg bg-light">
