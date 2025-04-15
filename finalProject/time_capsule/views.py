@@ -46,7 +46,7 @@ def letters(request):
                 content = form.cleaned_data['content']
                 date = form.cleaned_data['date']
                 time = form.cleaned_data['time']
-                capsule = LetterCapsule(capsule_name=capsule_name, content=content, date=date, time=time)
+                capsule = LetterCapsule(user=request.user, capsule_name=capsule_name, content=content, date=date, time=time)
                 capsule.save()
                 
             return redirect("/capsules/")
@@ -84,7 +84,7 @@ def form(request):
             future = form.cleaned_data['future']
             message = form.cleaned_data['message']
             
-            capsule = QuestionCapsule(capsule_name=capsule_name, date=date, time=time, year=year, weather=weather, living=living, occupation=occupation, song=song, 
+            capsule = QuestionCapsule(user=request.user, capsule_name=capsule_name, date=date, time=time, year=year, weather=weather, living=living, occupation=occupation, song=song, 
                                       book=book, show=show, foods=foods, dislikes=dislikes, memory=memory, goals=goals, best=best, future=future, message=message)
             capsule.save()
             
@@ -100,10 +100,11 @@ def form(request):
 
 def capsules(request):
     # display the database contents
-    letters = LetterCapsule.objects.all()
-    forms = QuestionCapsule.objects.all()
-    
     current_user = request.user
+    letters = LetterCapsule.objects.filter(user = current_user)
+    forms = QuestionCapsule.objects.filter(user=current_user)
+    
+    
     context = {
         'user': current_user,
         'letters': letters,

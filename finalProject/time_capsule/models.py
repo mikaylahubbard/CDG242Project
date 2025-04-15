@@ -5,6 +5,7 @@ from datetime import datetime
 
 # Create your models here.
 class LetterCapsule(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     capsule_name = models.CharField(max_length=255)
     content = models.CharField(max_length=5000)
     date = models.DateField()
@@ -15,6 +16,7 @@ class LetterCapsule(models.Model):
         return (f"ID: {self.id}, Name: {self.capsule_name}, Message: {self.content}, Date: {self.date}, Time: {self.time}")
     
 class QuestionCapsule(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     capsule_name = models.CharField(max_length=255)
     date = models.DateField(default=datetime.now)
     time = models.TimeField(default=datetime.now)
