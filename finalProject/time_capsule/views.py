@@ -104,6 +104,10 @@ def capsules(request):
     letters = LetterCapsule.objects.filter(user = current_user)
     forms = QuestionCapsule.objects.filter(user=current_user)
     
+    for letter in letters:
+        letter.checkIfLocked()
+    for form in forms:
+        form.checkIfLocked()
     
     context = {
         'user': current_user,

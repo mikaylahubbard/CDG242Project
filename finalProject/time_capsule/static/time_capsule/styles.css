@@ -5,8 +5,18 @@
    color:white;
 }
 
+.capsule {
+   background-image: url('clocks2.jpg');
+   background-size: cover;
+   height: 100%;
+   color:white;
+}
+
+
+
 .pocket {
    display: block;
    width: 42%;
    height: auto;
 }
+
