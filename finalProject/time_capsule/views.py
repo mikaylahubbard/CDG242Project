@@ -227,9 +227,15 @@ def logout_page(request):
 def viewLetter(request, letter_id):
     current_user = request.user 
     letter = get_object_or_404(LetterCapsule, id=letter_id)
+    if letter.user == current_user:
+        access_allowed = True
+    else:
+        access_allowed = False
+    letter.checkIfLocked()
     context = {
         'user': current_user,
         'letter': letter,
+        'access_allowed': access_allowed,
     }
     return render(request, 'viewLetter.html', context)
 
@@ -237,6 +243,7 @@ def viewForm(request, form_id):
     current_user = request.user 
     question_form = QuestionForm();
     form = get_object_or_404(QuestionCapsule, id=form_id)
+    form.checkIfLocked()
     context = {
         'user': current_user,
         'form': form,
