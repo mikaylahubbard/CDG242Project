@@ -98,16 +98,21 @@ def form(request):
     }
     return render(request, 'form.html', context)
 
+
 def capsules(request):
     # display the database contents
     current_user = request.user
-    letters = LetterCapsule.objects.filter(user = current_user)
-    forms = QuestionCapsule.objects.filter(user=current_user)
-    
-    for letter in letters:
-        letter.checkIfLocked()
-    for form in forms:
-        form.checkIfLocked()
+    if current_user.is_authenticated:
+        letters = LetterCapsule.objects.filter(user = current_user)
+        forms = QuestionCapsule.objects.filter(user = current_user)
+        
+        for letter in letters:
+            letter.checkIfLocked()
+        for form in forms:
+            form.checkIfLocked()
+    else:
+        letters = []
+        forms = []
     
     context = {
         'user': current_user,
