@@ -44,31 +44,22 @@
                   </li> 
                   {%endif%}
                 </ul>
+                </ul>
         </div>
     </nav>
-    <div class="container mt-5">
-        <!-- Login form -->
-        <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
-            {% csrf_token %}  <!-- CSRF token for security -->
 
-            <!-- Login heading -->
-
-           
-              <h3 class="text-center m-5">Are you sure you want to log out?</h3>
-
-
-            <!-- Display error/success messages -->
-            {% if messages %}
-            <div class="alert alert-primary" role="alert">
-                {% for message in messages %}
-                {{ message }}
-                {% endfor %}
-            </div>
-            {% endif %}
-
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-secondary">Log out</button>
-        </form>
+    <div class="col-10 card mx-auto my-5 card px-5 py-3 shadow-lg">
+        {% load static%}
+        <a href="/capsules/" class="pt-4"><img src="{% static 'time_capsule/left-arrow.png'%}"></a>
+        <div class="mx-5 text-wrap col-md-6 mx-auto">
+            <p class="text-center display-5 mt-5">{{letter.capsule_name}}</p>
+            <p class="text-center">Date Unlocked: {{letter.date}} at {{letter.time}}</p>
+        </div>
+        <hr />
+        <div>
+            <p class="p-5">{{letter.content}}</p>
+        </div>
     </div>
+   
   </body>
 </html>

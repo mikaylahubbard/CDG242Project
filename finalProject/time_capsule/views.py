@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
-
+from .models import LetterCapsule, QuestionCapsule
 
 # from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.forms import AuthenticationForm
@@ -114,6 +114,7 @@ def capsules(request):
         'letters': letters,
         'forms': forms,
     }
+    
     return render(request, 'capsules.html', context)
 
 def create(request):
@@ -217,5 +218,25 @@ def logout_page(request):
         return redirect('/')
     return render(request, 'logout.html', context)
 
+
+def viewLetter(request, letter_id):
+    current_user = request.user 
+    letter = get_object_or_404(LetterCapsule, id=letter_id)
+    context = {
+        'user': current_user,
+        'letter': letter,
+    }
+    return render(request, 'viewLetter.html', context)
+
+def viewForm(request, form_id):
+    current_user = request.user 
+    question_form = QuestionForm();
+    form = get_object_or_404(QuestionCapsule, id=form_id)
+    context = {
+        'user': current_user,
+        'form': form,
+        'questionForm': question_form,
+    }
+    return render(request, 'viewForm.html', context)
 
     

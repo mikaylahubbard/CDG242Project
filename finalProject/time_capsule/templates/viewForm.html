@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Login</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body class="bg-secondary text-white">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div clas="container-fluid">
+            <div class="collapse navbar-collapse" id="mynavbar">
+              {%load static%}
+              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="My image"></a>
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/about/">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/letters/">Letters</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/form/">Forms</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/capsules/">My Capsules</a>
+                  </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout/">Logout</a>
+                  </li>
+                  {%else%}
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login/">Login</a>
+                  </li> 
+                  {%endif%}
+                </ul>
+                </ul>
+        </div>
+    </nav>
+    <div class="col-10 card mx-auto my-5 card px-5 py-3 shadow-lg">
+        {% load static%}
+        <a href="/capsules/" class="pt-4"><img src="{% static 'time_capsule/left-arrow.png'%}"></a>
+        <div class="mx-5 text-wrap col-md-6 mx-auto">
+            <p class="text-center display-5 mt-5">{{form.capsule_name}}</p>
+            <p class="text-center">Date Unlocked: {{form.date}} at {{form.time}}</p>
+        </div>
+        <hr />
+        <div class="text-center">
+            <div class="row p-2 justify-content-center">
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.year.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.year}}</p>
+                </div>
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.weather.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.weather}}</p>
+                </div>
+        
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.living.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.living}}</p>
+                </div>
+            </div>
+            <div class="row p-2 justify-content-center">
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.occupation.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.occupation}}</p>
+                </div>
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.song.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.song}}</p>
+                </div>
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.book.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.book}}</p>
+                </div>
+            </div>
+            <div class="row p-2 justify-content-center">
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.show.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.show}}</p>
+                </div>
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.foods.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.foods}}</p>
+                </div>
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.dislikes.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.dislikes}}</p>
+                </div>
+            </div>
+            <div class="row p-2 justify-content-center">
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.memory.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.memory}}</p>
+                </div>
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.goals.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.goals}}</p>
+                </div>
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.best.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.best}}</p>
+                </div>
+            </div>
+            <div class="row p-2 justify-content-center">
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.future.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.future}}</p>
+                </div>
+                <div class="card col-3 m-4 bg-light">
+                    <h6 class="pt-4 card-title"><b>{{questionForm.message.label_tag}}</b></h6>
+                    <p class="p-2 card-body">{{form.message}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+  </body>
+</html>

@@ -95,12 +95,12 @@
             <div class="card-body">
               <h4 class="card-title">{{letter.capsule_name}}</h4>
               <p class="card-text">Unlocked {{letter.date}} at {{letter.time}}</p>
-              <a href="#" class="btn btn-success">View Letter</a>
+              <a href="{% url 'view_letter' letter.id %}"  class="btn btn-success">View Letter</a>
             {%endif%}
           </div>
           
         </div>
-      {%endfor%}`
+      {%endfor%}
       </div>
       {% comment %} <ul>
         {%for form in forms%}
@@ -125,11 +125,11 @@
               <div class="card-body">
                 <h4 class="card-title">{{form.capsule_name}}</h4>
                 <p class="card-text">Unlocked {{form.date}} at {{form.time}}</p>
-                <a href="#" class="btn btn-success">View Form</a>
+                <a href="{% url 'view_form' form.id %}" class="btn btn-success">View Form</a>
               </div>
           {%endif%}
           </div>
-        {%endfor%}`
+        {%endfor%}
         </div>
       {% else %}
       <div class="container mt-4">
