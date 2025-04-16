@@ -243,11 +243,16 @@ def viewForm(request, form_id):
     current_user = request.user 
     question_form = QuestionForm();
     form = get_object_or_404(QuestionCapsule, id=form_id)
+    if form.user == current_user:
+        access_allowed = True
+    else:
+        access_allowed = False
     form.checkIfLocked()
     context = {
         'user': current_user,
         'form': form,
         'questionForm': question_form,
+        'access_allowed': access_allowed,
     }
     return render(request, 'viewForm.html', context)
 
