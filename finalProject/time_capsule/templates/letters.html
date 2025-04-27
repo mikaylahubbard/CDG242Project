@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <!-- Latest compiled and minified CSS -->
     <link
@@ -17,7 +17,7 @@
         <div clas="container-fluid">
             <div class="collapse navbar-collapse" id="mynavbar">
               {%load static%}
-              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="My image"></a>
+              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="hourlgass logo"></a>
                 <ul class="navbar-nav me-auto">
                   <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
@@ -53,22 +53,17 @@
         <p class="text-center display-5 mt-5">Write a letter to your future self</p>
         <p>Include whatever you think you might like to know about yourself. Document you interests and feeling right now or your prediction of what your future will be. This can be a letter to yourself in 5 years, a letter for yourself for next week, or even a letter for someone else. Here you have complete freedom and the security to  vent however you would like. Enjoy :)</p>
       </div>
-      {% comment %} <form class="p-5" method="post">
-        {% csrf_token %} 
-        <div class="px-5 mx-5">
-          <div class="form-group">
-            {% comment %} <label for="letterTextArea">Write your letter here:</label> {% endcomment %}
-            {% comment %} <textarea rows="10" class="form-control" placeholder="Write your letter here" id="letterTextArea"></textarea>
-          </div>
-          <button type="submit" class="btn btn-dark mt-3">Save as Time Capsule</button>
-        </div> 
-      </form>{% endcomment %} 
+    
 
       <form class="col-10 card mx-auto my-5 card px-5 py-3 shadow-lg" method="post" enctype="multipart/form-data">
         {% csrf_token %}  <!-- CSRF token for security -->
 
+        <div class="col-8 p-5 align-self-center">
+        <hr />
+            <h3 class="text-center">Letter Entry</h3>
+         <hr />
         <!--heading -->
-        <br />
+        </div>
         {{form.content}}
         <div class="col-8 p-5 align-self-center">
           <hr />
@@ -77,8 +72,6 @@
 
           
           <div class="my-3 mx-5 mt-5">
-              {% comment %} <label for="name" class="form-label">Name of Capsule: </label>
-              <input type="textarea" class="form-control" id="capsule_name" placeholder="Enter a title..." name="e"> {% endcomment %}
           
               {{ form.capsule_name.label_tag }}
               <p>
@@ -105,7 +98,7 @@
           {% endif %}
 
           <!-- Submit button -->
-          <button type="submit" class="btn btn-secondary mx-5">Save Time Capsule</button>
+          <button type="submit" class="btn btn-secondary mx-5" aria-label="Save Time Capsule">Save Time Capsule</button>
         </div>
     </form>
        
@@ -118,5 +111,19 @@
       </div>
       {% endif %}
     </div>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 px-2 mt-4 bg-dark">
+      <div class="col-md-4 d-flex align-items-center p-4">
+        <span class="mb-3 mb-md-0 text-white-50">© 2025 Mikayla Hubbard, Anderson University Student</span>
+      </div>
+  
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3">
+          <a href="https://www.linkedin.com/in/mikayla-hubbard-05500a2b7/">
+            {%load static%}
+            <img src="{% static 'time_capsule/linkedin.png' %}"class="img-fluid me-5" alt="linked in">
+          </a>
+        <li>
+      </ul>
+    </footer>
   </body>
 </html>

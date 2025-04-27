@@ -1,7 +1,7 @@
 {% load static %}
 {% load crispy_forms_tags %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <!-- Latest compiled and minified CSS -->
     <link
@@ -19,12 +19,9 @@
   <body class="bg-secondary text-white">
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div clas="container-fluid">
-            {% comment %} <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-                <span class="navbar-toggler-icon"></span> {% endcomment %}
-            </button>
             <div class="collapse navbar-collapse" id="mynavbar">
               {%load static%}
-              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="My image"></a>
+              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="hourlgass logo"></a>
                 <ul class="navbar-nav me-auto">
                   <li class="nav-item">
                     <a class="nav-link active" href="/">Home</a>
@@ -66,7 +63,7 @@
       <div class="jumbotron p-5 d-flex justify-content-center border-bottom border-dark border-5">
      
           {% load static %}
-          <img src="{% static 'time_capsule/title3.png'%}">
+          <img src="{% static 'time_capsule/title3.png'%}" alt="Time Capsule">
           {% comment %} <h1 class="d-flex justify-content-center">Time Capsule</h1> {% endcomment %}
           {% comment %} <h4 class="d-flex justify-content-center">Save your memories for the future</h4> {% endcomment %}
 
@@ -100,5 +97,20 @@
         </div>
       </div>
     </div>
+
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 px-2 mt-4 bg-dark">
+      <div class="col-md-4 d-flex align-items-center p-4">
+        <span class="mb-3 mb-md-0 text-white-50">© 2025 Mikayla Hubbard, Anderson University Student</span>
+      </div>
+  
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3">
+          <a href="https://www.linkedin.com/in/mikayla-hubbard-05500a2b7/">
+            {%load static%}
+            <img src="{% static 'time_capsule/linkedin.png' %}"class="img-fluid me-5" alt="linked in">
+          </a>
+        <li>
+      </ul>
+    </footer>
   </body>
 </html>

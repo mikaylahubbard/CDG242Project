@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <!-- Latest compiled and minified CSS -->
     <link
@@ -8,6 +8,7 @@
     />
     {% load static %}
     <link rel="stylesheet", type="text/css", href="{%static 'time_capsule/styles.css' %}">
+    <link rel="stylesheet", href = "{%static 'time_capsule/custom.scss'%}">
     <!-- Latest compiled JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <title>Home</title>
@@ -19,7 +20,7 @@
         <div clas="container-fluid">
             <div class="collapse navbar-collapse" id="mynavbar">
               {%load static%}
-              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="My image"></a>
+              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="hourlgass logo"></a>
                 <ul class="navbar-nav me-auto">
                   <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
@@ -87,7 +88,7 @@
               <h4 class="card-title">{{letter.capsule_name}}</h4>
               <p class="card-text">Locked until {{letter.date}} at {{letter.time}}</p>
               {% load static %}
-              <a href="#" class="btn btn-bg-disabled"><img src="{% static 'time_capsule/lock.png'%}"></a>
+              <a href="#" class="btn btn-bg-disabled"><img src="{% static 'time_capsule/lock.png'%}" alt="lock"></a>
               
               
       {% else %}
@@ -95,7 +96,7 @@
             <div class="card-body">
               <h4 class="card-title">{{letter.capsule_name}}</h4>
               <p class="card-text">Unlocked {{letter.date}} at {{letter.time}}</p>
-              <a href="{% url 'view_letter' letter.id %}"  class="btn btn-success">View Letter</a>
+              <a href="{% url 'view_letter' letter.id %}"  class="btn btn-dark">View Letter</a>
             {%endif%}
           </div>
           
@@ -110,7 +111,7 @@
       <h3 class="text-center py-4 mt-2">Forms</h3>
       <hr />
       
-      <div class = "row justify-content-center border-bottom border-dark border-5 pb-4">
+      <div class = "row justify-content-center pb-4">
         {% for form in forms %}
           {% if form.locked %} 
             <div class="col-3 card m-3 rounded-3">
@@ -118,14 +119,14 @@
                 <h4 class="card-title">{{form.capsule_name}}</h4>
                 <p class="card-text">Locked until {{form.date}} at {{form.time}}</p>
                 {% load static %}
-                <a href="#" class="btn btn-bg-disabled"><img src="{% static 'time_capsule/lock.png'%}"></a>
+                <a href="#" class="btn btn-bg-disabled"><img src="{% static 'time_capsule/lock.png'%}" alt="lock"></a>
               </div>
           {% else %}
             <div class="col-3 card m-3 rounded-3">
               <div class="card-body">
                 <h4 class="card-title">{{form.capsule_name}}</h4>
                 <p class="card-text">Unlocked {{form.date}} at {{form.time}}</p>
-                <a href="{% url 'view_form' form.id %}" class="btn btn-success">View Form</a>
+                <a href="{% url 'view_form' form.id %}" class="btn btn-dark">View Form</a>
               </div>
           {%endif%}
           </div>
@@ -140,5 +141,19 @@
       </div>
       {% endif %}
     </div>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 px-2 mt-4 bg-dark">
+      <div class="col-md-4 d-flex align-items-center p-4">
+        <span class="mb-3 mb-md-0 text-white-50">© 2025 Mikayla Hubbard, Anderson University Student</span>
+      </div>
+  
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3">
+          <a href="https://www.linkedin.com/in/mikayla-hubbard-05500a2b7/">
+            {%load static%}
+            <img src="{% static 'time_capsule/linkedin.png' %}"class="img-fluid me-5" alt="linked in">
+          </a>
+        <li>
+      </ul>
+    </footer>
   </body>
 </html>

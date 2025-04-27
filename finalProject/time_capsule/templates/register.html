@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<htm lang="en">
   <head>
     <!-- Latest compiled and minified CSS -->
     <link
@@ -17,7 +17,7 @@
         <div clas="container-fluid">
             <div class="collapse navbar-collapse" id="mynavbar">
               {%load static%}
-              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="My image"></a>
+              <a class="navbar-brand ps-3" href="/"><img src="{% static 'time_capsule/transparentHourglass.png' %}"class="img-fluid" alt="hourlgass logo"></a>
                 <ul class="navbar-nav me-auto">
                   <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
@@ -94,8 +94,22 @@
             <p>Already have an account <a href="/login/">Login</a> </p>
 
             <!-- Submit button -->
-            <button type="submit" class="btn btn-secondary">Submit</button>
+            <button type="submit" class="btn btn-secondary" aria-label="submit">Submit</button>
         </form>
     </div>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 px-2 mt-4 bg-dark fixed-bottom">
+      <div class="col-md-4 d-flex align-items-center p-4">
+        <span class="mb-3 mb-md-0 text-white-50">© 2025 Mikayla Hubbard, Anderson University Student</span>
+      </div>
+  
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3">
+          <a href="https://www.linkedin.com/in/mikayla-hubbard-05500a2b7/">
+            {%load static%}
+            <img src="{% static 'time_capsule/linkedin.png' %}"class="img-fluid me-5" alt="linked in">
+          </a>
+        <li>
+      </ul>
+    </footer>
   </body>
 </html>
