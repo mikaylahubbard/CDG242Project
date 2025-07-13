@@ -132,25 +132,3 @@ STATICFILES_DIR = {
 }
 MEDIA_ROOT = os.path.join(BASE_DIR, 'public/static')
 MEDIA_URL = '/media/'
-
-import os
-import django
-from django.core.management import call_command
-from django.contrib.auth import get_user_model
-
-try:
-    django.setup()
-
-    # Run migrations
-    call_command('migrate', interactive=False)
-
-    # Create superuser if not exists
-    User = get_user_model()
-    if not User.objects.filter(username='admin').exists():
-        User.objects.create_superuser(
-            username='admin',
-            email='mikayla@thehubbards.org',
-            password='123Watson'
-        )
-except Exception as e:
-    print("Startup error:", e)
